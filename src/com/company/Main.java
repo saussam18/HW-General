@@ -70,26 +70,56 @@ public class Main {
         System.out.println();
         //Problem 6
         writeSquares(8);
+        //Problem 8
+        System.out.println();
+        System.out.println(multiplyEvens(1));
+        System.out.println(multiplyEvens(4));
+        //Problem 9
+        System.out.println(sumTo(2));
+        //Problem 10
+        System.out.println(digitMatch(1072503891, 62530841));
     }
-    public static void writeSquares(int num) {
-        if(num < 2){
-            System.out.print(num * num + ", ");
+    public static int digitMatch(int x, int y) {
+        if(x == 0 || y == 0){
+            return 0;
         }else{
-            if(num % 2 == 0){
-                writeSquares( num - 1);
-                System.out.print((num - 1) * (num - 1) + ", ");
-
-            }else {
-                writeSquares( num - 1);
-                System.out.print(num * num + ", ");
+            if(x % 10 == y % 10){
 
             }
 
+            return digitMatch(x / 10, y / 10);
+        }
 
+    }
 
+        public static double sumTo(double num) {
+        if(num == 1/num){
+            return num;
+        }else{
+            return 1 / num + (1 / sumTo(num - 1));
         }
     }
 
+        public static int multiplyEvens(int num) {
+        if(num == 1){
+            return num * 2;
+        }else{
+            return (num * 2) * multiplyEvens(num - 1);
+        }
+    }
+        public static void writeSquares(int num) {
+        if(num == 1) {
+            System.out.print(1);
+            return;
+        }
+            if (num % 2 == 0) {
+                writeSquares(num - 1);
+                System.out.print(", " + num * num);
+            } else {
+                System.out.print( num * num + ", ");
+                writeSquares(num - 1);
+            }
+    }
         public static void writeNums(int num) {
         if(num < 2){
             System.out.print(num + ", ");
