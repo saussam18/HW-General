@@ -41,27 +41,44 @@ public class Main {
         Problem 9: It would not reverse as you are printing the line before the method call
         Problem 10: An infinite loop or stack overflow happens as it calls the method forever
         pg 805
-        Problem 11:
+        Problem 11: There is no base case, so it becomes a stackOverflow or an infinite loop
 
-        Problem 12:
+        Problem 12: The one with the less recursive calls is always the more efficient
 
-        Problem 13:
+        Problem 13: Output
+        a. 6
+        b. 4
+        c. 7
+        d. 0
+        e. 1
+        Problem 14: Output
+        a. 57
+        b. 1029
+        c. -74
+        d. 2438
+        e. 132483
+        Problem 15: Output
+        a. 7
+        b. 6
+        c. 4
+        d. 10
+        e. 5
+        Problem 16: Check code for method
 
-        Problem 14:
+        Problem 17: You need to flip the less than sign from n < 10 to M > 10
 
-        Problem 15:
+        Problem 18: Throw an error or an exception or have it change to the closest desirable. All of these would work
 
-        Problem 16:
-
-        Problem 17:
-
-        Problem 18:
-
-        Problem 19:
+        Problem 19: Check code for method
 
          */
         doubleReverse("YEET");
         System.out.println();
+        //Pg806
+        //Problem 16
+        System.out.println(factorial(5));
+        //Problem 19
+        System.out.println(fibonacci(10));
         //Pg 808
         //Problem 2
         writeNums(5);
@@ -78,18 +95,98 @@ public class Main {
         System.out.println(sumTo(2));
         //Problem 10
         System.out.println(digitMatch(1072503891, 62530841));
+
+        //Project Problem #1
+        mAndC(3, 3, true);
     }
+
+    public static void mAndC(int m, int c, boolean b){ //Helped by Ginsu, couldn't get the reverse my way so gave up and did it Ginsu's way which actually worked
+        if(m == 0 && c == 0 && b == false){
+            System.out.println(" M M M C C C                                     ");
+            System.out.println("            ____B");
+        }else if(b ==true){
+            if(m == 3 && c == 3){
+                System.out.println("                                 C C C M M M");
+            }else if(m == 3 && c == 2){
+                System.out.println(" C                                 C C M M M");
+            }else if(m == 3 && c == 1){
+                System.out.println(" C C                                 C M M M");
+            }else if(m == 2 && c == 2){
+                System.out.println(" M C                                 C C M M");
+            }else if(m == 0 && c == 3){
+                System.out.println(" M M M                                 C C C");
+            }else if(m == 0 && c == 2){
+                System.out.println(" M M M C                                C C ");
+            }
+            System.out.println("                          B____");
+            System.out.println();
+            if(m - 2 >= c || m - 2 == 0){
+                mAndC(m - 2, c, false);
+            }else{
+                mAndC(m, c - 2, false);
+            }
+
+        }else if (b == false){
+            if(m == 3 && c == 1){
+                System.out.println(" C C                                 C M M M");
+            }else if(m == 3 && c == 0){
+            System.out.println(" C C C                                     M M M");
+            }else if(m == 1 && c == 1){
+                System.out.println(" M M C C                                 C M");
+            }else if(m == 0 && c == 2){
+                System.out.println(" M M M C                                 C C");
+            }else if(m == 0 && c == 1){
+                System.out.println(" M M M C C                                 C");
+            }
+            System.out.println("            ____B");
+            System.out.println();
+            if(m >= c + 1 || m == 0){
+                mAndC(m, c + 1, true);
+            }else if(m <= c + 1 && m != 1){
+                mAndC(m +1 , c, true);
+            }else{
+                mAndC(m + 1, c + 1, true);
+            }
+
+        }
+    }
+    public static int fibonacci(int n) {
+        if (n <= 2) {
+            return 1;
+        } else {
+            return fibonacci(n, 3, 1, 1);
+        }
+    }
+
+    private static int fibonacci(int n, int i, int prev, int curr) {
+        if (n == i) {
+            return prev + curr;
+        } else {
+            return fibonacci(n, i + 1, curr, prev + curr);
+        }
+    }
+
+    public static int factorial(int n){
+        if(n == 1){
+            return n;
+        }
+        return n * factorial(n-1);
+    }
+
     public static int digitMatch(int x, int y) {
         if(x == 0 || y == 0){
             return 0;
-        }else{
+        }else if (x < 10 || y < 10){
             if(x % 10 == y % 10){
-
+                return 1;
+            }else{
+                return 0;
             }
-
+        }else if(x % 10 != y % 10){
             return digitMatch(x / 10, y / 10);
+        }else{
+            return 1 + digitMatch(x / 10, y / 10);
         }
-
     }
 
         public static double sumTo(double num) {
