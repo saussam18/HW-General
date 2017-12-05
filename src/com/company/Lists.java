@@ -1,9 +1,10 @@
 package com.company;
 
-public class P2 {
-
+public class Lists {
+    //Pg 997 5-17
     /*
-      Problem 5:
+
+    Problem 5:
                    +----+----+    +----+----+
         list ----> |  1 |  +----> |  3 |  / |
                    +----+----+    +----+----+
@@ -76,6 +77,7 @@ public class P2 {
     list2.next = temp;
     list.next.next = null;
     list2.next.next = null;
+
      */
 
 
