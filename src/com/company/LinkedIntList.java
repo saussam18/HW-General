@@ -20,7 +20,7 @@ public class LinkedIntList {
         }
 
     }
-
+    //Problem 1
     public void set (int index, int value){
         ListNode current = front;
         for (int i = 0; i < index; i++) {
@@ -28,18 +28,24 @@ public class LinkedIntList {
         }
         current.data = value;
     }
+    //Problem 2
     public int min (){
-        ListNode current = front;
-        int min = current.data;
-        while(current.next != null){
-            int x = current.data;
-            if(x < min){
-                min = x;
+        if(front == null){
+            throw new IllegalStateException();
+        }else {
+            ListNode current = front;
+            int min = current.data;
+            while (current.next != null) {
+                int x = current.data;
+                if (x < min) {
+                    min = x;
+                }
+                current = current.next;
             }
-            current = current.next;
+            return min;
         }
-        return min;
     }
+    //Problem 3
     public boolean isSorted (){
         ListNode current = front;
         boolean b = true;
@@ -53,16 +59,32 @@ public class LinkedIntList {
         }
         return b;
     }
-
-
-
-
-
-
-
-
-
-
-
-
+    //Problem 4
+    public int lastIndexOf (int value){
+        ListNode current = front;
+        int check = -1;
+        while(current.next != null){
+            int count = 0;
+            int x = current.data;
+            if(x == value){
+                check = count + 1;
+            }
+            current = current.next;
+        }
+        return check;
+    }
+    // Problem 5
+    public int countDuplicates (){
+        ListNode current = front;
+        int count = 0;
+        while(current.next != null){
+            int x = current.data;
+            int y = current.next.data;
+            if(y == x){
+                count ++;
+            }
+            current = current.next;
+        }
+        return count;
+    }
 }
